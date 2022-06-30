@@ -1,0 +1,113 @@
+.container-fluid{
+    height: 1000px;
+    width: 100%;
+    background-color: #e9e6e6;
+}
+
+.head {
+    height: auto;
+    background-color: #003247;
+    overflow: hidden;
+    border-bottom: 5px solid #2f5767;
+}
+
+.nav-bar{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    list-style: none;
+}
+
+.nav-items a {
+    display: block;
+    text-align: center;
+    padding: 1em;
+    font-size: 15px;
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    position: relative;
+    top: 10px;
+    transition-duration: 0.5s;
+}
+
+.nav-items a:hover {
+    color:#2f5767;
+}
+
+.nav-logo a {
+    position: relative;
+    top: 15px;
+    padding-left: 50px;
+}
+
+img {
+    height: 40px;
+}
+
+form, label, input, select{
+    padding: 0.5em;    
+    position: relative;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serifS;
+    font-weight: 200;
+    font-size: 20px;
+    color: #003247;
+}
+
+form, label, select{
+    text-align: left;
+}
+
+form {
+    background-color: #e9e6e6;
+    padding-bottom: 50px;
+}
+
+.body {
+    height: auto;
+    background-color: #e9e6e6;
+}
+
+
+.add-title {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serifS;
+    padding: 1em;
+    color: #003247;
+    font-weight: 800;
+    text-align: center;
+}
+
+input[type=text] , input[type=number]{
+    width: 300px;
+}
+
+input[type=submit]{
+    background-color: #e9e6e6;
+    border-radius: 3px;
+    border: 2px solid #2f5767;
+    color: #2f5767;
+    padding: 5px 25px;
+    text-align: center;
+    transition-duration: 0.5s;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+input[type=submit]:hover{
+    background-color: #2f5767;
+    color: #e9e6e6;
+}
+
+
+tr {
+    padding: 0.5em;    
+    position: relative;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serifS;
+    font-weight: 100;
+    font-size: 15px;
+    color: #003247;
+    text-align: center;
+}
+
