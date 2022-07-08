@@ -16,12 +16,14 @@
     align-items: flex-start;
     flex-direction: row;
     list-style: none;
+    width: 50%;
+    justify-content: center ;
 }
 
 .nav-items a {
     display: block;
     text-align: center;
-    padding: 1em;
+    padding: 1.5em;
     font-size: 15px;
     text-decoration: none;
     color: white;
@@ -36,14 +38,38 @@
     color:#2f5767;
 }
 
+.nav-items-main a {
+    display: block;
+    text-align: center;
+    padding: 1.5em;
+    border-bottom: solid white;
+    font-size: 15px;
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    position: relative;
+    top: 10px;
+    transition-duration: 0.5s;
+}
+
+.nav-items-main a:hover {
+    color: white;
+    border-bottom: solid white;
+}
+
 .nav-logo a {
     position: relative;
     top: 15px;
-    padding-left: 50px;
+    padding-left: 500px;
 }
 
 img {
     height: 40px;
+}
+
+.home-body {
+    padding: 2em;
 }
 
 form, label, input, select{
@@ -69,13 +95,64 @@ form {
     background-color: #e9e6e6;
 }
 
+.view {
+    padding: 1em;
+}
+
+.view-list {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    justify-content: center;
+    list-style: none;
+    row-gap: 20px;
+
+}
+
+.view-title a{
+    display: block;
+    padding: 1.4em;
+    font-size: 25px;
+    text-align: center;
+    text-decoration: none;
+    color: gray;
+    font-weight: 700;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    position: relative;
+    top: 10px;
+    transition-duration: 0.5s;
+}
+
+.view-title a:hover {
+    color: #2f5767;
+}
+
+.view-title-main a:hover {
+    color: #003247;
+}
+
+.view-title-main a{
+    display: block;
+    padding: 1em;
+    font-size: 30px;
+    text-align: center;
+    text-decoration: none;
+    color: #003247;
+    font-weight: 700;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    position: relative;
+    top: 10px;
+    transition-duration: 0.5s;
+    border-bottom: solid #003247;
+}
 
 .add-title {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serifS;
     padding: 1em;
-    color: #003247;
-    font-weight: 800;
+    font-size: 30px;
     text-align: center;
+    color: #003247;
+    font-weight: 500;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 input[type=text] , input[type=number]{

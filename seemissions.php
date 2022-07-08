@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
+    <!-- META TAGS REQUIRED TO USE BOOTSTRAP FROM https://getbootstrap.com/docs/5.2/getting-started/introduction/ -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 	<head>
         
         <title>European Space Agency</title>
-
-        <link href="css/style.css" rel="stylesheet" />
+        <!-- LINK TO LOCAL CSS FILE with php echo time function to speed up css loading-->
+        <link href="css/style.css?v=<?php echo time(); ?>" rel="stylesheet" />
+        <!-- BOOTSTRAP CSS GOTTEN FROM https://getbootstrap.com/docs/5.1/getting-started/download/ -->
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
             rel="stylesheet"
@@ -18,20 +19,16 @@
 
     </head>
 
+
 	<body>
         <div class="container-fluid">
             <div class="row head">
                 
                 <ul class="nav-bar">
                     <li class="nav-items"><a href="index.php">HOME</a></li>
-                    <li class="nav-items"><a href="addmission.php">ADD MISSION</a></li> 
-                    <li class="nav-items"><a href="addastronaut.php">ADD ASTRONAUT</a></li>  
-                    <li class="nav-items"><a href="addtarget.php">ADD TARGET</a></li>
-                    <li class="nav-items"><a href="seemissions.php">SEE ALL MISSIONS</a> </li>
-                    <li class="nav-items"><a href="seeastronauts.php">SEE ALL ASTRONAUTS</a></li> 
-                    <li class="nav-items"><a href="seetargets.php">SEE ALL TARGETS</a></li> 
+                    <li class="nav-items"><a href="addastronaut.php">ADD TO DATABASE</a></li>  
+                    <li class="nav-items-main"><a href="seemissions.php">DATABASE VIEW</a> </li>
                     <li class="nav-logo"><a href="index.php"><img src="images/esa-logotype-white-text-number-symbol-word-transparent-png-2497943.png" alt=""></a></li>
-
                 </ul>
 
 
@@ -57,67 +54,75 @@
                     die("Error: could not connect");
                 } 
             ?>
-		
-		<h1 class="add-title">See all Missions</h1>
+		<div class="row view">
+            <ul class="view-list">
+                <li class="view-title"><a href="seeastronauts.php">Astronaut</a></li>
+                <li class="view-title-main"><a href="seemissions.php">Missions</a></li>
+                <li class="view-title"><a href="seetargets.php">Targets</a></li>
+            </ul>
+        </div>   
+            
+        <div>
+            <table class="table table-hover">
+                <tr>
+                    <th width="120px">Mission ID<br><hr></th>
+                    <th width="200px">Mission Name<br><hr></th>
+                    <th width="230px">Mission Destination<br><hr></th>
+                    <th width="200px">Launch Date<br><hr></th>
+                    <th width="200px">Mission_Type<br><hr></th>
+                    <th width="250px">Crew Size of Mission<br><hr></th>
+                    <th width="150px">Target ID<br><hr></th>
+                </tr>
 
-        <table class="table table-hover">
-			<tr>
-				<th width="120px">Mission ID<br><hr></th>
-				<th width="200px">Mission Name<br><hr></th>
-                <th width="230px">Mission Destination<br><hr></th>
-                <th width="200px">Launch Date<br><hr></th>
-                <th width="200px">Mission_Type<br><hr></th>
-                <th width="250px">Crew Size of Mission<br><hr></th>
-                <th width="150px">Astronaut ID<br><hr></th>
-                <th width="150px">Target ID<br><hr></th>
-			</tr>
-
-			<?php
-                /* mysqli_query() function for querying/getting information out of a database.
-                   Add in variable called $link to connect to database where information is going to be queried from,
-                   the second value after $link is a string query, next is sql code to SELECT column FROM table 
-                */
-                $sql = mysqli_query($link, "SELECT mission_id, name, destination, launch_date, mission_type, crew_size, astronaut_id, target_id FROM missions");
-                // While loop that fetches a row when $row is equal to the $sql queried
-                while ($row = $sql->fetch_assoc()) {
-                    /* Each time to loop is triggered, the following html <th> tags are printed onto the html code, columns are extracted from the missions table 
-                       and printed into the <th> tags
+                <?php
+                    /* mysqli_query() function for querying/getting information out of a database.
+                    Add in variable called $link to connect to database where information is going to be queried from,
+                    the second value after $link is a string query, next is sql code to SELECT column FROM table 
                     */
-                    echo "
-                    <tr>
-                        <th>{$row['mission_id']}</th>
-                        <th>{$row['name']}</th>
-                        <th>{$row['destination']}</th>
-                        <th>{$row['launch_date']}</th>
-                        <th>{$row['mission_type']}</th>
-                        <th>{$row['crew_size']}</th>
-                        <th>{$row['astronaut_id']}</th>
-                        <th>{$row['target_id']}</th>
-                    </tr>
-                    ";
-                }
-			?>
-		</table>
-		
-		<?php
-			
-            // Close connection using mysqli_close()
-            mysqli_close($link)
+                    $sql = mysqli_query($link, "SELECT mission_id, name, destination, launch_date, mission_type, crew_size, target_id FROM missions");
+                    // While loop that fetches a row when $row is equal to the $sql queried
+                    while ($row = $sql->fetch_assoc()) {
+                        /* Each time to loop is triggered, the following html <th> tags are printed onto the html code, columns are extracted from the missions table 
+                        and printed into the <th> tags
+                        */
+                        echo "
+                        <tr>
+                            <th>{$row['mission_id']}</th>
+                            <th>{$row['name']}</th>
+                            <th>{$row['destination']}</th>
+                            <th>{$row['launch_date']}</th>
+                            <th>{$row['mission_type']}</th>
+                            <th>{$row['crew_size']}</th>
+                            <th>{$row['target_id']}</th>
+                        </tr>
+                        ";
+                    }
+                ?>
+            </table>
+            
+            <?php
+                
+                // Close connection using mysqli_close()
+                mysqli_close($link)
 
-		?>
-	
+            ?>
+	    </div>
+
+
+        <!-- OTHER THINGDS REQUIRED FOR USING BOOTSTRAP FROM https://getbootstrap.com/docs/5.1/getting-started/download/ -->
+        <!-- jQuery -->
         <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"
         ></script>
-
+        <!-- Popper.js -->
         <script
         src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
         integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
         crossorigin="anonymous"
         ></script>
-
+        <!-- Bootstrap JS -->
         <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
         integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
